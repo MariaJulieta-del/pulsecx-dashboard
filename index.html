@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PulseCX · Panel de Atención al Cliente con IA</title>
+<link rel="stylesheet" href="style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <span class="brand-name">PulseCX</span>
+    </div>
+
+    <nav class="nav">
+      <a class="nav-item active" href="#">
+        <span class="nav-icon">◧</span> Panel general
+      </a>
+      <a class="nav-item" href="#">
+        <span class="nav-icon">☎</span> Cola de tickets
+      </a>
+      <a class="nav-item" href="#">
+        <span class="nav-icon">✦</span> Asistente IA
+      </a>
+      <a class="nav-item" href="#">
+        <span class="nav-icon">▤</span> Reportes
+      </a>
+      <a class="nav-item" href="#">
+        <span class="nav-icon">⚙</span> Configuración
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button id="themeToggle" class="theme-toggle" title="Cambiar tema">🌙 Modo oscuro</button>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <header class="topbar">
+      <div>
+        <h1>Hola, agente 👋</h1>
+        <p class="subtitle">Así viene el turno hoy</p>
+      </div>
+      <div class="agent-chip">
+        <div class="avatar">JG</div>
+        <div>
+          <strong>Julieta</strong>
+          <span>Atención al Cliente</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="kpis">
+      <div class="kpi-card">
+        <span class="kpi-label">Llamadas atendidas</span>
+        <span class="kpi-value" id="kpiCalls">0</span>
+        <span class="kpi-trend up">▲ 12% vs. ayer</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">Tiempo promedio de espera</span>
+        <span class="kpi-value" id="kpiWait">0s</span>
+        <span class="kpi-trend down">▼ 8% vs. ayer</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">Satisfacción (CSAT)</span>
+        <span class="kpi-value" id="kpiCsat">0%</span>
+        <span class="kpi-trend up">▲ 3% vs. ayer</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">Tickets abiertos</span>
+        <span class="kpi-value" id="kpiOpen">0</span>
+        <span class="kpi-trend neutral">= sin cambios</span>
+      </div>
+    </section>
+
+    <section class="grid-2">
+      <div class="panel">
+        <div class="panel-header">
+          <h2>Volumen por hora</h2>
+          <span class="panel-tag">Hoy</span>
+        </div>
+        <canvas id="volumeChart" height="220"></canvas>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <h2>Canales de contacto</h2>
+          <span class="panel-tag">Últimos 7 días</span>
+        </div>
+        <canvas id="channelChart" height="220"></canvas>
+      </div>
+    </section>
+
+    <section class="grid-2">
+      <div class="panel table-panel">
+        <div class="panel-header">
+          <h2>Cola de tickets</h2>
+          <span class="panel-tag">En vivo</span>
+        </div>
+        <table class="tickets-table">
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Canal</th>
+              <th>Prioridad</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="ticketsBody"></tbody>
+        </table>
+      </div>
+
+      <div class="panel assistant-panel">
+        <div class="panel-header">
+          <h2>Asistente IA</h2>
+          <span class="panel-tag">Sugerencia de respuesta</span>
+        </div>
+
+        <div class="chat-window" id="chatWindow">
+          <div class="chat-msg bot">
+            👋 Contame qué te dice el cliente y te sugiero una respuesta.
+          </div>
+        </div>
+
+        <form id="chatForm" class="chat-form">
+          <input
+            id="chatInput"
+            type="text"
+            placeholder="Ej: el cliente dice que no le llegó el pedido..."
+            autocomplete="off"
+          />
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Hecho con 💜 para Evoltis · Proyecto de práctica — datos simulados
+    </footer>
+
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
